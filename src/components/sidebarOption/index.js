@@ -21,7 +21,6 @@ function SidebarOption({ Icon, title, key, addChannelOption, id }) {
 
   const selectChannel = () => {
     if (id) {
-      console.log(id)
       dispath(
         enterRoom({
           roomId: id,
