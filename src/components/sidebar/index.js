@@ -16,9 +16,12 @@ import SidebarOption from "../sidebarOption";
 import AddIcon from "@material-ui/icons/Add";
 
 import { useCollection } from "react-firebase-hooks/firestore"
-import { db } from "../../firebase";
+import { auth, db } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function Sidebar() {
+  const [user] = useAuthState(auth)
+
   const sidebarOptions = [
     {
       title: "threads",
@@ -61,10 +64,10 @@ function Sidebar() {
     <SidebarContainer>
       <SidebarHeader>
         <SidebarInfo>
-          <h2>Miguel Arreaza</h2>
+          <h2>{user.displayName}</h2>
           <h3>
             <FiberManualRecordIcon />
-            @mgarreaza13
+            {user.email}
           </h3>
         </SidebarInfo>
         <CreateIcon />
